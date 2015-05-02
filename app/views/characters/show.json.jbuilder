@@ -1,0 +1,1 @@
+json.extract! @character, :id, :name, :background, :personality_traits, :ideals, :bonds, :flaws, :strength, :dexterity, :constitution, :inteligence, :wisdom, :charisma, :proficiency_bonus, :race, :created_at, :updated_at

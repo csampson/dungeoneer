@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @character.name %>
+</p>
+
+<p>
+  <strong>Background:</strong>
+  <%= @character.background %>
+</p>
+
+<p>
+  <strong>Personality traits:</strong>
+  <%= @character.personality_traits %>
+</p>
+
+<p>
+  <strong>Ideals:</strong>
+  <%= @character.ideals %>
+</p>
+
+<p>
+  <strong>Bonds:</strong>
+  <%= @character.bonds %>
+</p>
+
+<p>
+  <strong>Flaws:</strong>
+  <%= @character.flaws %>
+</p>
+
+<p>
+  <strong>Strength:</strong>
+  <%= @character.strength %>
+</p>
+
+<p>
+  <strong>Dexterity:</strong>
+  <%= @character.dexterity %>
+</p>
+
+<p>
+  <strong>Constitution:</strong>
+  <%= @character.constitution %>
+</p>
+
+<p>
+  <strong>Inteligence:</strong>
+  <%= @character.inteligence %>
+</p>
+
+<p>
+  <strong>Wisdom:</strong>
+  <%= @character.wisdom %>
+</p>
+
+<p>
+  <strong>Charisma:</strong>
+  <%= @character.charisma %>
+</p>
+
+<p>
+  <strong>Proficiency bonus:</strong>
+  <%= @character.proficiency_bonus %>
+</p>
+
+<p>
+  <strong>Race:</strong>
+  <%= @character.race %>
+</p>
+
+<%= link_to 'Edit', edit_character_path(@character) %> |
+<%= link_to 'Back', characters_path %>
