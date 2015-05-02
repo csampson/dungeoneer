@@ -70,5 +70,50 @@
   <%= @character.race %>
 </p>
 
+<p>
+  <strong>Current HP:</strong>
+  <%= @character.current_hp %>
+</p>
+
+<p>
+  <strong>Max HP:</strong>
+  <%= @character.max_hp %>
+</p>
+
+<p>
+  <strong>Current Hit Die:</strong>
+  <%= @character.current_hit_die %>
+</p>
+
+<p>
+  <strong>Max Hit Die:</strong>
+  <%= @character.max_hit_die %>
+</p>
+
+<p>
+  <strong>Hit Die:</strong>
+  <%= @character.hit_die %>
+</p>
+
+<p>
+  <strong>AC:</strong>
+  <%= @character.ac %>
+</p>
+
+<p>
+  <strong>Speed:</strong>
+  <%= @character.speed %>
+</p>
+
+<p>
+  <strong>Alignment:</strong>
+  <%= @character.alignment %>
+</p>
+
+<p>
+  <strong>Class:</strong>
+  <%= @character.klass %>
+</p>
+
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>
