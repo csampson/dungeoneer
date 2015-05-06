@@ -1,3 +1,43 @@
+<div class='character-sheet'>
+  <ul class='header-field-list'>
+    <li class='header-field-item'>
+      <label class='character-name-label header-field-label'>
+        Name
+        <%= text_field 'character', :name %>
+      </label>
+    </li>
+
+    <li class='header-field-item'>
+      <label class='character-name-label header-field-label'>
+        Background
+        <%= text_field 'character', :background %>
+      </label>
+    </li>
+
+    <li class='header-field-item'>
+      <label class='character-race-label header-field-label'>
+        Race
+        <%= text_field 'character', :race %>
+      </label>
+    </li>
+
+    <li class='header-field-item'>
+      <label class='character-alignment-label header-field-label'>
+        Alignment
+        <%= text_field 'character', :alignment %>
+      </label>
+    </li>
+
+     <li class='header-field-item'>
+      <label class='character-alignment-label header-field-label'>
+        Appearance
+        ...
+      </label>
+    </li>
+  </ul>
+</div>
+
+<!--
 <%= form_for(@character) do |f| %>
   <% if @character.errors.any? %>
     <div id="error_explanation">
@@ -107,3 +147,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+-->
