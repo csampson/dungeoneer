@@ -12,6 +12,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var imagemin   = require('gulp-imagemin');
 var watch      = require('gulp-watch');
 var batch      = require('gulp-batch');
+var plumber    = require('gulp-plumber');
     
 var browserify = require('browserify');
 var watchify   = require('watchify');
@@ -46,6 +47,7 @@ function bundleScripts(options) {
   }
 
   return stream
+    .pipe(plumber())
     .pipe(source('application.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
@@ -68,6 +70,7 @@ gulp.task('clean-js', function() {
 
 gulp.task('bundle-css', ['clean-css'], function () {
   return gulp.src('./app/assets/stylesheets/application.styl')
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(stylus({ use: [nib()], compress: true }))
     .pipe(sourcemaps.write('./'))
@@ -76,6 +79,7 @@ gulp.task('bundle-css', ['clean-css'], function () {
 
 gulp.task('bundle-images', ['clean-images'], function() {
   return gulp.src('./app/assets/images/**/*')
+    .pipe(plumber())
     .pipe(imagemin({
         progressive: true,
         svgoPlugins: [{removeViewBox: false}]
