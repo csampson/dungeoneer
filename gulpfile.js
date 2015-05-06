@@ -2,19 +2,22 @@
 
 var del = require('del');
 
-var source = require('vinyl-source-stream'),
-    buffer = require('vinyl-buffer');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 
-var gulp       = require('gulp'),
-    gulpUtil   = require('gulp-util'),
-    uglify     = require('gulp-uglify'),
-    sourcemaps = require('gulp-sourcemaps');
+var gulp       = require('gulp');
+var gulpUtil   = require('gulp-util');
+var uglify     = require('gulp-uglify');
+var sourcemaps = require('gulp-sourcemaps');
+var imagemin   = require('gulp-imagemin');
+var watch      = require('gulp-watch');
+var batch      = require('gulp-batch');
     
-var browserify = require('browserify'),
-    watchify   = require('watchify');
+var browserify = require('browserify');
+var watchify   = require('watchify');
 
-var stylus = require('gulp-stylus'),
-    nib    = require('nib');
+var stylus = require('gulp-stylus');
+var nib    = require('nib');
 
 var config = {
   debug: gulpUtil.env.type !== 'production'
@@ -26,14 +29,16 @@ var scriptBundler = browserify({
 });
 
 function bundleScripts(options) {
-  var bundler = options.watch ? watchify(scriptBundler) : scriptBundler,
-      stream  = bundler.bundle();
+  var bundler = options.watch ? watchify(scriptBundler) : scriptBundler;
+  var stream  = bundler.bundle();
 
   if (options.watch) {
     bundler.on('update', function() {
       console.log('Re-bundling scripts...'); // TODO: built-in way to handle this logging..?
       bundleScripts({ watch: false });
     });
+
+    return;
   }
 
   if (config.debug) {
@@ -49,8 +54,16 @@ function bundleScripts(options) {
     .pipe(gulp.dest('./public/javascripts'));
 }
 
+gulp.task('clean-images', function() {
+  return del('./public/images/**/*');
+});
+
 gulp.task('clean-css', function() {
-  return del('./public/stylesheets/**/*.css');
+  return del('./public/stylesheets/**/*');
+});
+
+gulp.task('clean-js', function() {
+  return del('./public/javascripts/**/*');
 });
 
 gulp.task('bundle-css', ['clean-css'], function () {
@@ -58,24 +71,37 @@ gulp.task('bundle-css', ['clean-css'], function () {
     .pipe(sourcemaps.init())
     .pipe(stylus({ use: [nib()], compress: true }))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./public/stylsheets/'));
+    .pipe(gulp.dest('./public/stylesheets'));
 });
 
-gulp.task('watch-css', ['bundle-css'], function() {
-  gulp.watch('./app/assets/stylesheets/**/*.styl', ['bundle-css']);
-});
-
-gulp.task('clean-js', function() {
-  return del('./public/javascripts/**/*.js');
+gulp.task('bundle-images', ['clean-images'], function() {
+  return gulp.src('./app/assets/images/**/*')
+    .pipe(imagemin({
+        progressive: true,
+        svgoPlugins: [{removeViewBox: false}]
+    }))
+    .pipe(gulp.dest('./public/images'));
 });
 
 gulp.task('bundle-js', ['clean-js'], function() {
   bundleScripts({ watch: false });
 });
 
+gulp.task('watch-images', ['bundle-images'], function() {
+  watch('./app/assets/images/**/*', function () {
+    gulp.start('bundle-images');
+  });
+});
+
+gulp.task('watch-css', ['bundle-css'], function() {
+  watch('./app/assets/stylesheets/**/*.styl', function() {
+    gulp.start('bundle-css');
+  });
+});
+
 gulp.task('watch-js', ['bundle-js'], function() {
   bundleScripts({ watch: true });
 });
 
-gulp.task('bundle', ['bundle-css', 'bundle-js']);
-gulp.task('bundle-watch', ['watch-css', 'watch-js']);
+gulp.task('bundle', ['bundle-images', 'bundle-css', 'bundle-js']);
+gulp.task('bundle-watch', ['watch-images', 'watch-css', 'watch-js']);
