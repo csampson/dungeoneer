@@ -1,43 +1,86 @@
-<div class='character-sheet'>
-  <ul class='header-field-list'>
-    <li class='header-field-item'>
-      <label class='character-name-label header-field-label'>
-        Name
-        <%= text_field 'character', :name %>
-      </label>
-    </li>
+<%= form_for(@character) do |form| %>
+  <% if @character.errors.any? %>
+    <div class="ui negative message">
+      <ul>
+      <% @character.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-    <li class='header-field-item'>
-      <label class='character-name-label header-field-label'>
-        Background
-        <%= text_field 'character', :background %>
+  <div class="character-sheet">
+    <header class="character-name">
+      <label class="character-name-label header-field-label">
+        <span class="header-field-text">Character Name</span>
+        <%= form.text_field :name, :class => "header-field-input ui-input-minimal" %>
       </label>
-    </li>
+    </header>
 
-    <li class='header-field-item'>
-      <label class='character-race-label header-field-label'>
-        Race
-        <%= text_field 'character', :race %>
-      </label>
-    </li>
+    <div class="character-image">
+      <img class="character-image-content" src="http://fc04.deviantart.net/fs71/f/2012/190/c/4/space_marine_commander_by_fonteart-d56jpuc.jpg" alt="" />
+    </div>
 
-    <li class='header-field-item'>
-      <label class='character-alignment-label header-field-label'>
-        Alignment
-        <%= text_field 'character', :alignment %>
-      </label>
-    </li>
+    <ul class="header-field-list">
+      <li class="header-field-item">
+        <label class="character-name-label header-field-label">
+          <span class="header-field-text">Background</span>
+          <%= form.text_field :background, :class => "header-field-input ui-input-minimal" %>
+        </label>
+      </li>
 
-     <li class='header-field-item'>
-      <label class='character-alignment-label header-field-label'>
-        Appearance
-        ...
-      </label>
-    </li>
-  </ul>
-</div>
+      <li class="header-field-item">
+        <label class="character-race-label header-field-label">
+          <span class="header-field-text">Race</span>
+          <%= form.text_field :race, :class => "header-field-input ui-input-minimal" %>
+        </label>
+      </li>
 
-<!--
+      <li class="header-field-item">
+        <label class="character-alignment-label header-field-label">
+          <span class="header-field-text">Alignment</span>
+          <%= form.text_field :alignment, :class => "header-field-input ui-input-minimal" %>
+        </label>
+      </li>
+
+      <li class="header-field-item size-small">
+        <label class="character-alignment-label header-field-label">
+          <span class="header-field-text">Gender</span>
+          <input class="header-field-input ui-input-minimal size-small" type="text" />
+        </label>
+      </li>
+
+      <li class="header-field-item size-small">
+        <label class="character-alignment-label header-field-label">
+          <span class="header-field-text">Size</span>
+          <input class="header-field-input ui-input-minimal" type="text" />
+        </label>
+      </li>
+
+       <li class="header-field-item size-small">
+        <label class="character-alignment-label header-field-label">
+          <span class="header-field-text">Weight</span>
+          <input class="header-field-input ui-input-minimal" type="text" />
+        </label>
+      </li>
+
+      <li class="header-field-item size-small">
+        <label class="character-alignment-label header-field-label">
+          <span class="header-field-text">Height</span>
+          <input class="header-field-input ui-input-minimal size-small" type="text" />
+        </label>
+      </li>
+    </ul>
+
+    <% if false %>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if false %>
 <%= form_for(@character) do |f| %>
   <% if @character.errors.any? %>
     <div id="error_explanation">
@@ -147,4 +190,4 @@
     <%= f.submit %>
   </div>
 <% end %>
--->
+<% end %>

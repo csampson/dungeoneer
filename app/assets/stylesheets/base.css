@@ -1,0 +1,7 @@
+body {
+  background: url('/images/dark-background.png') repeat;
+  color: var(--whiteSmoke);
+  font-family: 'Crimson Text', sans-serif;
+  font-size: 16px;
+  padding: 2rem 10%;
+}

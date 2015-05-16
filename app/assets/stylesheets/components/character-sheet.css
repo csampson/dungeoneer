@@ -1,0 +1,54 @@
+.character-sheet {
+  margin: 0 auto;
+  /*clearfix();*/
+  
+  .character-name {
+    margin-bottom: 2rem;
+  }
+  
+  .character-name .header-field-input {
+    font-size: 2rem;
+    width: 100%;
+  }
+
+  .header-field-list {
+    /*reset-list();*/
+    /*clearfix();*/
+  }
+  
+  .header-field-item {
+    display: table-cell;
+    
+    &.size-small {
+      width: 6rem;
+    }
+    
+    & + .header-field-item {
+      padding-left: 1rem;
+    }
+  }
+  
+  .header-field-text {
+    color: $dimGray;
+  }
+  
+  .header-field-input {
+    font-size: 1.2rem;
+    width: 100%;
+    display: block;
+  }
+  
+  .character-image {
+    box-shadow: 0 2px 2px black;
+    border: 1px solid;
+    width: 16.875rem;
+    height: 22.5rem;
+    margin-right: 2rem;
+    float: left;
+  }
+  
+  .character-image-content {
+    width: 100%;
+    height: 100%;
+  }
+}

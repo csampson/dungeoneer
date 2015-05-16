@@ -2,13 +2,12 @@
 <html>
 <head>
   <title>Dungeoneer</title>
-  <%= stylesheet_link_tag    '/stylsheets/application.css', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag '/javascripts/application.js', 'data-turbolinks-track' => true %>
+  <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Crimson+Text:400,700,600' />
+  <%= stylesheet_link_tag    '/stylesheets/application.css', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <%= yield %>
+  <%= javascript_include_tag '/javascripts/application.js', 'data-turbolinks-track' => true %>
 </body>
 </html>

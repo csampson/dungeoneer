@@ -13,12 +13,14 @@ var imagemin   = require('gulp-imagemin');
 var watch      = require('gulp-watch');
 var batch      = require('gulp-batch');
 var plumber    = require('gulp-plumber');
+var postcss    = require('gulp-postcss');
     
 var browserify = require('browserify');
 var watchify   = require('watchify');
 
-var stylus = require('gulp-stylus');
-var nib    = require('nib');
+var cssnext       = require('cssnext');
+var postcssImport = require('postcss-import');
+var postcssNested = require('postcss-nested');
 
 var config = {
   debug: gulpUtil.env.type !== 'production'
@@ -69,12 +71,31 @@ gulp.task('clean-js', function() {
 });
 
 gulp.task('bundle-css', ['clean-css'], function () {
-  return gulp.src('./app/assets/stylesheets/application.styl')
+  var plugins = [];
+
+  /**
+   * Allows vanilla @import statements to be transformed into inline file content
+   */
+  plugins.push(postcssImport({
+    glob: true
+  }));
+
+  /**
+   * 
+   */
+  plugins.push(postcssNested());
+
+  /**
+   * Transform vanilla CSS to allow for all sorts of fancy things
+   */
+  plugins.push(cssnext());
+
+  return gulp.src('./app/assets/stylesheets/application.css')
     .pipe(plumber())
-    .pipe(sourcemaps.init())
-    .pipe(stylus({ use: [nib()], compress: true }))
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(postcss(plugins))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./public/stylesheets'));
+    .pipe(gulp.dest('public/stylesheets'));
 });
 
 gulp.task('bundle-images', ['clean-images'], function() {
@@ -98,7 +119,7 @@ gulp.task('watch-images', ['bundle-images'], function() {
 });
 
 gulp.task('watch-css', ['bundle-css'], function() {
-  watch('./app/assets/stylesheets/**/*.styl', function() {
+  watch('./app/assets/stylesheets/**/*.css', function() {
     gulp.start('bundle-css');
   });
 });
@@ -108,4 +129,4 @@ gulp.task('watch-js', ['bundle-js'], function() {
 });
 
 gulp.task('bundle', ['bundle-images', 'bundle-css', 'bundle-js']);
-gulp.task('bundle-watch', ['watch-images', 'watch-css', 'watch-js']);
+gulp.task('watch', ['watch-images', 'watch-css', 'watch-js']);
