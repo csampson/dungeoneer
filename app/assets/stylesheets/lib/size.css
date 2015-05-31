@@ -1,0 +1,39 @@
+[flex-container] {
+  display: flex;
+}
+
+[flex] {
+  flex: 1;
+}
+
+[flex='tiny'] {
+  flex: 1;
+}
+
+[flex='small'] {
+  flex: 2;
+}
+
+[flex='medium'] {
+  flex: 3;
+}
+
+[flex='large'] {
+  flex: 4;
+}
+
+[flex='massive'] {
+  flex: 5;
+}
+
+[grid-container] {
+  display: flex;
+}
+
+[grid-item='tiny'] {
+  width: 12.5%;
+}
+
+[grid-item='small'] {
+  width: 25%;
+}

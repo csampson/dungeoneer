@@ -1,0 +1,10 @@
+.ui-field {
+  display: block;
+}
+
+.ui-field-label {
+  color: var(--dimGray);
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+  display: block;
+}

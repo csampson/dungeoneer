@@ -20,7 +20,7 @@ var watchify   = require('watchify');
 
 var cssnext       = require('cssnext');
 var postcssImport = require('postcss-import');
-var postcssNested = require('postcss-nested');
+var atcss         = require('gulp-atcss');
 
 var config = {
   debug: gulpUtil.env.type !== 'production'
@@ -71,29 +71,12 @@ gulp.task('clean-js', function() {
 });
 
 gulp.task('bundle-css', ['clean-css'], function () {
-  var plugins = [];
-
-  /**
-   * Allows vanilla @import statements to be transformed into inline file content
-   */
-  plugins.push(postcssImport({
-    glob: true
-  }));
-
-  /**
-   * 
-   */
-  plugins.push(postcssNested());
-
-  /**
-   * Transform vanilla CSS to allow for all sorts of fancy things
-   */
-  plugins.push(cssnext());
-
   return gulp.src('./app/assets/stylesheets/application.css')
     .pipe(plumber())
     .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(postcss(plugins))
+    .pipe(postcss([postcssImport({ glob: true })]))
+    .pipe(atcss())
+    .pipe(postcss([cssnext()]))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('public/stylesheets'));
 });

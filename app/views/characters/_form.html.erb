@@ -1,82 +1,87 @@
 <%= form_for(@character) do |form| %>
   <% if @character.errors.any? %>
-    <div class="ui negative message">
-      <ul>
-      <% @character.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <ul>
+    <% @character.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
   <% end %>
 
-  <div class="character-sheet">
-    <div class="character-image">
-      <img class="character-image-content" src="http://fc07.deviantart.net/fs70/f/2013/258/3/9/barbarian_by_thedurrrrian-d6mfvo6.jpg" alt="" />
+  <div class="character-editor" spellcheck="false">
+    <div flex-container>
+      <div class="editor-portrait">
+        <img class="editor-portrait-content" src="http://vignette3.wikia.nocookie.net/warhammer40k/images/2/2a/BloodAngelsTacticalMarine.jpg/revision/latest/scale-to-width/250?cb=20111214191855" alt="" />
+      </div>
+
+      <div flex='large'>
+        <ul class="editor-attributes" grid-container>
+          <li grid-item='small'>
+            <label class="ui-field">
+              <span class="ui-field-label">Name</span>
+              <%= form.text_field :name, :class => "ui-field-input ui-text-input" %>
+            </label>
+          </li>
+
+          <li grid-item="small">
+            <label class="ui-field">
+              <span class="ui-field-label">Background</span>
+              <%= form.text_field :background, :class => "ui-field-input ui-text-input" %>
+            </label>
+          </li>
+
+          <li grid-item="small">
+            <label class="ui-field">
+              <span class="ui-field-label">Class</span>
+              <%= form.text_field :klass, :class => "ui-field-input ui-text-input" %>
+            </label>
+          </li>
+
+          <li grid-item="small">
+            <label class="ui-field">
+              <span class="ui-field-label">Alignment</span>
+              <%= form.text_field :alignment, :class => "ui-field-input ui-text-input" %>
+            </label>
+          </li>
+        </ul>
+
+        <ul class="editor-attributes" grid-container>
+          <li grid-item="small">
+            <label class="ui-field">
+              <span class="ui-field-label">Race</span>
+              <%= form.text_field :race, :class => "ui-field-input ui-text-input" %>
+            </label>
+          </li>
+
+          <li grid-item="small">
+            <label class="ui-field">
+              <span class="ui-field-label">Gender</span>
+              <input class="ui-field-input ui-text-input" type="text" />
+            </label>
+          </li>
+
+          <li grid-item="small">
+            <label class="ui-field">
+              <span class="ui-field-label">Size</span>
+              <input class="ui-field-input ui-text-input" type="text" />
+            </label>
+          </li>
+
+           <li grid-item="tiny">
+            <label class="ui-field">
+              <span class="ui-field-label">Weight</span>
+              <input class="ui-field-input ui-text-input" type="text" />
+            </label>
+          </li>
+
+          <li grid-item="tiny">
+            <label class="ui-field">
+              <span class="ui-field-label">Height</span>
+              <input class="ui-field-input ui-text-input" type="text" />
+            </label>
+          </li>
+        </ul>
+      </div>
     </div>
-
-    <header class="character-name">
-      <label class="character-name-label header-field-label">
-        <span class="header-field-text">Character Name</span>
-        <%= form.text_field :name, :class => "header-field-input ui-input-minimal" %>
-      </label>
-    </header>
-
-    <ul class="header-field-list">
-      <li class="header-field-item">
-        <label class="character-name-label header-field-label">
-          <span class="header-field-text">Background</span>
-          <%= form.text_field :background, :class => "header-field-input ui-input-minimal" %>
-        </label>
-      </li>
-
-      <li class="header-field-item">
-        <label class="character-race-label header-field-label">
-          <span class="header-field-text">Race</span>
-          <%= form.text_field :race, :class => "header-field-input ui-input-minimal" %>
-        </label>
-      </li>
-
-      <li class="header-field-item">
-        <label class="character-alignment-label header-field-label">
-          <span class="header-field-text">Alignment</span>
-          <%= form.text_field :alignment, :class => "header-field-input ui-input-minimal" %>
-        </label>
-      </li>
-
-      <li class="header-field-item size-small">
-        <label class="character-alignment-label header-field-label">
-          <span class="header-field-text">Gender</span>
-          <input class="header-field-input ui-input-minimal size-small" type="text" />
-        </label>
-      </li>
-
-      <li class="header-field-item size-small">
-        <label class="character-alignment-label header-field-label">
-          <span class="header-field-text">Size</span>
-          <input class="header-field-input ui-input-minimal" type="text" />
-        </label>
-      </li>
-
-       <li class="header-field-item size-small">
-        <label class="character-alignment-label header-field-label">
-          <span class="header-field-text">Weight</span>
-          <input class="header-field-input ui-input-minimal" type="text" />
-        </label>
-      </li>
-
-      <li class="header-field-item size-small">
-        <label class="character-alignment-label header-field-label">
-          <span class="header-field-text">Height</span>
-          <input class="header-field-input ui-input-minimal size-small" type="text" />
-        </label>
-      </li>
-    </ul>
-
-    <% if false %>
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-    <% end %>
   </div>
 <% end %>
 

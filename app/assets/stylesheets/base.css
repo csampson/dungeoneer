@@ -1,9 +1,13 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
-  background: url('/images/dark-background.png') repeat;
-  color: var(--whiteSmoke);
-  font-family: 'Crimson Text', sans-serif;
+  background: #1B1813;
+  color: white;
+  font-family: Asul, serif;
   font-size: 16px;
-  padding: 7rem 10% 2rem;
+  padding: 7rem 2rem 2rem;
 }
 
 .app-nav {
@@ -15,4 +19,9 @@ body {
   left: 0;
   right: 0;
   top: 0;
+}
+
+.app-content {
+  width: 64rem;
+  margin: 0 auto;
 }

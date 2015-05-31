@@ -1,7 +1,6 @@
-@import 'vendor/normalize';
+@import 'vendor/*';
+@import 'lib/*';
 
-@import 'lib/colors';
 @import 'base';
-
-@import 'patterns/*';
+@import 'elements/*';
 @import 'components/*'
