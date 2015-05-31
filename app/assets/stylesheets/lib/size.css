@@ -37,3 +37,11 @@
 [grid-item='small'] {
   width: 25%;
 }
+
+[grid-item='medium'] {
+  width: 50%;
+}
+
+[grid-item='large'] {
+  width: 75%;
+}

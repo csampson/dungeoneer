@@ -3,7 +3,11 @@
   border: none;
   border-bottom: 1px solid var(--nightRider);
   background: none;
-  padding-bottom: 1px;
+  padding-bottom: 2px;
+}
+
+.ui-text-input:hover {
+ border-bottom-color: var(--dimGray);
 }
 
 .ui-text-input:focus {
