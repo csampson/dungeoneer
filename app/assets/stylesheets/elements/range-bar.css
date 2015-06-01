@@ -1,0 +1,27 @@
+.ui-range-bar {
+  background-color: transparent;
+  appearance: none;
+  overflow: hidden;
+}
+
+.ui-range-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 0.65rem;
+  position: relative;
+}
+
+.ui-range-bar::-webkit-slider-thumb::before {
+  content: '';
+  background: #0E778A;
+  position: absolute;
+  height: 100%;
+  left: -100vw;
+  right: 0;
+  top: 0;
+}
+
+.ui-range-bar::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  background-color: #181818;
+}

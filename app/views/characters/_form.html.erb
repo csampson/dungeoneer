@@ -10,11 +10,11 @@
   <div class="character-editor" spellcheck="false">
     <div flex-container>
       <div class="editor-portrait">
-        <img class="editor-portrait-content" src="http://vignette3.wikia.nocookie.net/warhammer40k/images/2/2a/BloodAngelsTacticalMarine.jpg/revision/latest/scale-to-width/250?cb=20111214191855" alt="" />
+        <img class="editor-portrait-content" src="http://th05.deviantart.net/fs71/PRE/i/2014/059/e/f/___barbarian____by_wyv1-d78c0nq.jpg" alt="" />
       </div>
 
       <div flex='large'>
-        <ul class="editor-attributes" grid-container>
+        <ul class="editor-fields" grid-container>
           <li grid-item='small'>
             <label class="ui-field">
               <span class="ui-field-label">Name</span>
@@ -44,7 +44,7 @@
           </li>
         </ul>
 
-        <ul class="editor-attributes" grid-container>
+        <ul class="editor-fields" grid-container>
           <li grid-item="small">
             <label class="ui-field">
               <span class="ui-field-label">Race</span>
@@ -80,6 +80,50 @@
             </label>
           </li>
         </ul>
+
+        <div grid-container>
+          <div grid-item="medium">
+            <div class="editor-attributes-header ui-field-label">Ability Scores</div>
+
+            <dl class="editor-attributes">
+              <dt class="editor-attributes-label">STR</dt>
+              <dd class="editor-attributes-value" flex-container>
+                <input id="character_str" name="character[strength]" class="ui-range-bar" type="range" min="1" max="20" oninput="character_str_output.value = character_str.value" flex="massive" />
+                <output id="character_str_output" for="character_str" flex="tiny"><%= @character[:strength] %></output>
+              </dd>
+
+              <dt class="editor-attributes-label">DEX</dt>
+              <dd class="editor-attributes-value" flex-container>
+                <input id="character_dex" name="character[dexterity]" class="ui-range-bar" type="range" min="1" max="20" oninput="character_dex_output.value = character_dex.value" flex="massive" />
+                <output id="character_dex_output" for="character_dex" flex="tiny"><%= @character[:dexterity] %></output>
+              </dd>
+
+              <dt class="editor-attributes-label">CON</dt>
+              <dd class="editor-attributes-value" flex-container>
+                <input id="character_con" name="character[constitution]" class="ui-range-bar" type="range" min="1" max="20" oninput="character_con_output.value = character_con.value" flex="massive" />
+                <output id="character_con_output" for="character_con" flex="tiny"><%= @character[:constitution] %></output>
+              </dd>
+
+              <dt class="editor-attributes-label">INT</dt>
+              <dd class="editor-attributes-value" flex-container>
+                <input id="character_int" name="character[inteligence]" class="ui-range-bar" type="range" min="1" max="20" oninput="character_int_output.value = character_int.value" flex="massive" />
+                <output id="character_int_output" for="character_int" flex="tiny"><%= @character[:inteligence] %></output>
+              </dd>
+
+              <dt class="editor-attributes-label">WIS</dt>
+              <dd class="editor-attributes-value" flex-container>
+                <input id="character_wis" name="character[wisdom]" class="ui-range-bar" type="range" min="1" max="20" oninput="character_wis_output.value = character_wis.value" flex="massive" />
+                <output id="character_wis_output" for="character_wis" flex="tiny"><%= @character[:wisdom] %></output>
+              </dd>
+
+              <dt class="editor-attributes-label">CHA</dt>
+              <dd class="editor-attributes-value" flex-container>
+                <input id="character_cha" name="character[charisma]" class="ui-range-bar" type="range" min="1" max="20" oninput="character_cha_output.value = character_cha.value" flex="massive" />
+                <output id="character_cha_output" for="character_cha" flex="tiny"><%= @character[:charisma] %></output>
+              </dd>
+            </dl>
+          </div>
+        </div>
       </div>
     </div>
   </div>

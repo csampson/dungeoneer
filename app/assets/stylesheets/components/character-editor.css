@@ -2,6 +2,14 @@
  * @component character-editor
  */
 
+.character-editor .ui-field {
+  padding-right: 1rem;
+}
+
+.character-editor .ui-field-input {
+  width: 100%;
+}
+
 .character-editor .editor-portrait {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
   border: 1px solid var(--darth);
@@ -15,16 +23,38 @@
   height: 100%;
 }
 
+.character-editor .editor-fields,
 .character-editor .editor-attributes {
   /*
    * @use .reset-list
    */
 }
 
-.character-editor .ui-field {
-  padding-right: 1rem;
+.character-editor .editor-attributes {
+  font-size: 0.85rem;
 }
 
-.character-editor .ui-field-input {
-  width: 100%;
+.character-editor .editor-attributes-header {
+  margin-bottom: 0.5rem;
+}
+
+.character-editor .editor-attributes-label {
+  float: left;
+  clear: left;
+}
+
+.character-editor .editor-attributes-value {
+  margin-bottom: 0.5rem;
+}
+
+/**
+ * @todo abstract
+ */
+.character-editor .editor-attributes input[type='text'] {
+  border: 1px solid #3E3E3E;
+  background: none;
+  text-align: center;
+  width: 2rem;
+  padding: 0.25rem;
+  margin-left: 0.5rem;
 }

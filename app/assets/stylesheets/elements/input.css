@@ -1,7 +1,7 @@
 .ui-text-input {
   transition: all 0.25s ease;
   border: none;
-  border-bottom: 1px solid var(--nightRider);
+  border-bottom: 1px solid #3E3E3E;
   background: none;
   padding-bottom: 2px;
 }
